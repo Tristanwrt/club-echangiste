@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /data/
+Disallow: /404.php
+
+Sitemap: http://club-echangiste.fr/sitemap.xml

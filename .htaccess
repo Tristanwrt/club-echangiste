@@ -1,0 +1,75 @@
+Options -Indexes
+RewriteEngine On
+RewriteBase /
+
+# HTTPS redirect
+# RewriteCond %{HTTPS} off
+# RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Static files pass-through
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# ── CLEAN URL ROUTES ──────────────────────────────────────────
+
+# Homepage
+RewriteRule ^$ index.php [L,QSA]
+
+# Regions index
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^regions/?$ regions.php [L,QSA]
+
+# Region detail
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^region/([a-z0-9\-]+)/?$ region.php?slug=$1 [L,QSA]
+
+# Department detail
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^departement/([a-z0-9\-]+)/?$ department.php?slug=$1 [L,QSA]
+
+# City/Ville detail
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ville/([a-z0-9\-]+)/?$ ville.php?slug=$1 [L,QSA]
+
+# Guide
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^guide/?$ guide.php [L,QSA]
+
+# Ajouter un club
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ajouter-club/?$ ajouter-club.php [L,QSA]
+
+# Mentions légales
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^mentions-legales/?$ mentions-legales.php [L,QSA]
+
+# Confidentialité
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^confidentialite/?$ mentions-legales.php [L,QSA]
+
+# Contact
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^contact/?$ ajouter-club.php [L,QSA]
+
+# 404
+ErrorDocument 404 /404.php
+
+# Charset & perf
+AddDefaultCharset UTF-8
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+</IfModule>

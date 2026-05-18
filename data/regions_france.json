@@ -1,0 +1,92 @@
+[
+    {
+        "id": 1,
+        "name": "Auvergne-Rhône-Alpes",
+        "slug": "auvergne-rhone-alpes"
+    },
+    {
+        "id": 2,
+        "name": "Hauts-de-France",
+        "slug": "hauts-de-france"
+    },
+    {
+        "id": 3,
+        "name": "Provence-Alpes-Côte d'Azur",
+        "slug": "provence-alpes-cote-d-azur"
+    },
+    {
+        "id": 4,
+        "name": "Grand Est",
+        "slug": "grand-est"
+    },
+    {
+        "id": 5,
+        "name": "Occitanie",
+        "slug": "occitanie"
+    },
+    {
+        "id": 6,
+        "name": "Normandie",
+        "slug": "normandie"
+    },
+    {
+        "id": 7,
+        "name": "Nouvelle-Aquitaine",
+        "slug": "nouvelle-aquitaine"
+    },
+    {
+        "id": 8,
+        "name": "Centre-Val de Loire",
+        "slug": "centre-val-de-loire"
+    },
+    {
+        "id": 9,
+        "name": "Bourgogne-Franche-Comté",
+        "slug": "bourgogne-franche-comte"
+    },
+    {
+        "id": 10,
+        "name": "Bretagne",
+        "slug": "bretagne"
+    },
+    {
+        "id": 11,
+        "name": "Corse",
+        "slug": "corse"
+    },
+    {
+        "id": 12,
+        "name": "Pays de la Loire",
+        "slug": "pays-de-la-loire"
+    },
+    {
+        "id": 13,
+        "name": "Île-de-France",
+        "slug": "ile-de-france"
+    },
+    {
+        "id": 14,
+        "name": "Guadeloupe",
+        "slug": "guadeloupe"
+    },
+    {
+        "id": 15,
+        "name": "Martinique",
+        "slug": "martinique"
+    },
+    {
+        "id": 16,
+        "name": "Guyane",
+        "slug": "guyane"
+    },
+    {
+        "id": 17,
+        "name": "La Réunion",
+        "slug": "la-reunion"
+    },
+    {
+        "id": 18,
+        "name": "Mayotte",
+        "slug": "mayotte"
+    }
+]

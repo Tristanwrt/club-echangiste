@@ -20,12 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'submi
     exit;
   }
 
-  $file = __DIR__ . '/data/leads.json';
-  $leads = [];
-  if (file_exists($file)) {
-    $leads = json_decode(file_get_contents($file), true) ?: [];
-  }
-  $leads[] = [
+  $lead = [
     'email'      => $email,
     'result'     => $result,
     'score'      => $score,
@@ -34,7 +29,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'submi
     'ip'         => $_SERVER['REMOTE_ADDR'] ?? '',
     'ua'         => substr($_SERVER['HTTP_USER_AGENT'] ?? '', 0, 200),
   ];
+
+  // Try persistent storage (data/leads.json). Falls back to /tmp on read-only
+  // filesystems (Vercel, etc.) — volatile but useful for previews.
+  $primary  = __DIR__ . '/data/leads.json';
+  $fallback = '/tmp/leads.json';
+  $file     = is_writable(__DIR__ . '/data') ? $primary : $fallback;
+
+  $leads = [];
+  if (file_exists($file)) {
+    $leads = json_decode(file_get_contents($file), true) ?: [];
+  }
+  $leads[] = $lead;
   @file_put_contents($file, json_encode($leads, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
+
+  // Mirror to PHP error log so leads are recoverable even when FS is volatile.
+  error_log('[LEAD] ' . json_encode($lead, JSON_UNESCAPED_UNICODE));
 
   echo json_encode(['ok' => true]);
   exit;

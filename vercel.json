@@ -1,27 +1,30 @@
 {
-  "functions": {
-    "*.php": {
-      "runtime": "vercel-php@0.7.3"
-    }
-  },
+  "version": 2,
+  "builds": [
+    { "src": "*.php",       "use": "vercel-php@0.7.3" },
+    { "src": "styles.css",  "use": "@vercel/static" },
+    { "src": "robots.txt",  "use": "@vercel/static" },
+    { "src": "sitemap.xml", "use": "@vercel/static" },
+    { "src": "data/*.json", "use": "@vercel/static" }
+  ],
   "routes": [
-    { "src": "/styles.css", "dest": "/styles.css" },
-    { "src": "/robots.txt", "dest": "/robots.txt" },
+    { "src": "/styles.css",  "dest": "/styles.css" },
+    { "src": "/robots.txt",  "dest": "/robots.txt" },
     { "src": "/sitemap.xml", "dest": "/sitemap.xml" },
-    { "src": "/favicon.ico", "dest": "/favicon.ico", "status": 404 },
 
-    { "src": "/", "dest": "/index.php" },
-    { "src": "/quiz/?", "dest": "/quiz.php" },
-    { "src": "/regions/?", "dest": "/regions.php" },
-    { "src": "/region/([a-z0-9\\-]+)/?", "dest": "/region.php?slug=$1" },
-    { "src": "/departement/([a-z0-9\\-]+)/?", "dest": "/department.php?slug=$1" },
-    { "src": "/ville/([a-z0-9\\-]+)/?", "dest": "/ville.php?slug=$1" },
-    { "src": "/guide/?", "dest": "/guide.php" },
-    { "src": "/ajouter-club/?", "dest": "/ajouter-club.php" },
-    { "src": "/mentions-legales/?", "dest": "/mentions-legales.php" },
-    { "src": "/confidentialite/?", "dest": "/mentions-legales.php" },
-    { "src": "/contact/?", "dest": "/ajouter-club.php" },
+    { "src": "/",                              "dest": "/index.php" },
+    { "src": "/quiz/?",                        "dest": "/quiz.php" },
+    { "src": "/regions/?",                     "dest": "/regions.php" },
+    { "src": "/region/([a-z0-9\\-]+)/?",       "dest": "/region.php?slug=$1" },
+    { "src": "/departement/([a-z0-9\\-]+)/?",  "dest": "/department.php?slug=$1" },
+    { "src": "/ville/([a-z0-9\\-]+)/?",        "dest": "/ville.php?slug=$1" },
+    { "src": "/guide/?",                       "dest": "/guide.php" },
+    { "src": "/ajouter-club/?",                "dest": "/ajouter-club.php" },
+    { "src": "/mentions-legales/?",            "dest": "/mentions-legales.php" },
+    { "src": "/confidentialite/?",             "dest": "/mentions-legales.php" },
+    { "src": "/contact/?",                     "dest": "/ajouter-club.php" },
 
-    { "src": "/(.*)", "dest": "/404.php", "status": 404 }
+    { "src": "/(.*\\.php)",                    "dest": "/$1" },
+    { "src": "/(.*)",                          "dest": "/404.php", "status": 404 }
   ]
 }

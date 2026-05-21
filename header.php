@@ -61,6 +61,7 @@ $canonical    = isset($canonical) ? $canonical : $site_url . $_SERVER['REQUEST_U
       <div class="nav__links" id="nav-links">
         <a href="/">Accueil</a>
         <a href="/regions">Régions</a>
+        <a href="/quiz">Quiz</a>
         <a href="/guide">Guide</a>
         <a href="/ajouter-club">Ajouter un club</a>
       </div>

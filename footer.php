@@ -45,6 +45,7 @@
         <p class="footer__col-title">Informations</p>
         <ul>
           <li><a href="/guide">Guide du libertin</a></li>
+          <li><a href="/quiz">Quiz : quelle app pour toi ?</a></li>
           <li><a href="/ajouter-club">Ajouter un club</a></li>
           <li><a href="/mentions-legales">Mentions légales</a></li>
           <li><a href="/confidentialite">Confidentialité</a></li>
